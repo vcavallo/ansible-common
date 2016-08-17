@@ -1,0 +1,1 @@
+ansible all -m ping -i hosts -u vagrant --private-key /Volumes/vagrant-boxes/.vagrant/machines/default/virtualbox/private_key
