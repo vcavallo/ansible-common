@@ -1,3 +1,7 @@
+# todo:
+
+- ruby installer / general rails setup
+
 This setup is designed for Ubuntu 16.06 only for now.
 
 - you will need to `ansible-vault create vars/passwords.yml` (this file is not checked in to git)
