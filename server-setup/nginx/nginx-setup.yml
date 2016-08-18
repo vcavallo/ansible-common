@@ -1,0 +1,16 @@
+---
+- hosts: appservers
+  become: yes
+  become_method: sudo
+
+  tasks:
+  - name: Insure apt is updated
+    apt: update_cache=yes
+
+  - name: Install nginx
+    apt: name=nginx state=installed
+
+  - name: Copy nginx config
+    template: src=default.conf dest=/etc/nginx/conf.d/default.conf
+    notify: restart nginx
+

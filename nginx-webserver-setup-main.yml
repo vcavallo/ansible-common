@@ -1,0 +1,3 @@
+---
+- include: server-setup/package-setup.yml
+- include: server-setup/nginx/nginx-setup.yml
