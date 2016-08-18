@@ -1,0 +1,30 @@
+---
+- hosts: appservers
+  become: yes
+  become_method: sudo
+  vars_files: 
+    - ../vars/passwords.yml
+
+  tasks:
+  - name: Create admin sudo user
+    user:
+      name=admin
+      password={{ admin_user_password }}
+      groups=sudo
+      append=yes
+      shell=/bin/bash
+
+  - name: Add admin authorized key
+    authorized_key:
+      user=admin
+      key="{{ common_public_key }}"
+      state=present
+
+  #- name: Add admin to passworded sudoers.
+    #lineinfile:
+      #dest: /etc/sudoers
+      #regexp: '^admin'
+      #line: 'admin ALL=(ALL) ALL'
+      #state: present
+      #validate: 'visudo -cf %s'
+    #with_items: "admin"
