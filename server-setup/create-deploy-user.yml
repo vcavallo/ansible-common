@@ -2,7 +2,7 @@
 - hosts: appservers
   become: yes
   become_method: sudo
-  vars_files: 
+  vars_files:
     - ../vars/passwords.yml
 
   tasks:
