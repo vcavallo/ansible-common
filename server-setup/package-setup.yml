@@ -1,0 +1,22 @@
+---
+- hosts: vagrant-boxes
+  remote_user: vagrant # TODO: move to var
+  become: yes
+  become_method: sudo
+
+  tasks:
+  - name: Insure apt is updated
+    apt: update_cache=yes
+
+  - name: Install base packages
+    apt: name={{item}} state=installed
+    with_items:
+      - curl
+      - wget
+      - unzip
+      - git
+      - ack-grep
+      - htop
+      - vim
+      - tmux
+      - software-properties-common

@@ -1,0 +1,2 @@
+---
+- include: server-setup/package-setup.yml

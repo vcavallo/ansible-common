@@ -1,0 +1,6 @@
+---
+- hosts: vagrant-boxes
+  remote_user: vagrant # TODO: move to var
+  tasks:
+    - name: test connection with ping
+      ping:
