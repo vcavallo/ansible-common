@@ -1,6 +1,5 @@
 ---
-- hosts: vagrant-boxes
-  remote_user: vagrant # TODO: move to var
+- hosts: appservers
   tasks:
     - name: test connection with ping
       ping:
