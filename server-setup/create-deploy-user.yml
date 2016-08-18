@@ -1,0 +1,21 @@
+---
+- hosts: appservers
+  become: yes
+  become_method: sudo
+  vars_files: 
+    - ../vars/passwords.yml
+
+  tasks:
+  - name: Create deploy sudo user
+    user:
+      name=deploy
+      password={{ deploy_user_password }}
+      groups=www-data
+      append=yes
+      shell=/bin/bash
+
+  - name: Add deploy authorized key
+    authorized_key:
+      user=deploy
+      key="{{ common_public_key }}"
+      state=present
