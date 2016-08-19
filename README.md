@@ -5,7 +5,7 @@
 This setup is designed for Ubuntu 16.06 only for now.
 
 - you will need to `ansible-vault create vars/passwords.yml` (this file is not checked in to git)
-- within, define `admin_user_password` and `common_public_key` (first create an rsa keypair. For now, for testing this with vagrant, I've created a key and stored it in dropbox which is ok because I'm not doing anything secret with it)
+- within, define `admin_user_password`, `deploy_user_password` and `common_public_key` (first create an rsa keypair. For now, for testing this with vagrant, I've created a key and stored it in dropbox which is ok because I'm not doing anything secret with it)
 
 other stuff to do:
 
