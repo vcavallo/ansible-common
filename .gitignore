@@ -1,2 +1,3 @@
 *.retry
 vars/passwords.yml
+Vagrantfile
