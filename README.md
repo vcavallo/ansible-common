@@ -52,12 +52,14 @@ deploy_user_password: THE_PASSWORD_FOR_SERVERS_DEPLOY_USER
 common_public_key: "PASTE_YOUR_ID_RSA_PUB_HERE_IN_THESE_QUOTES"
 ```
 
-This `common_public_key` bit above is likely far from ideal or even bad... Now that I look back at the `authorized_key` task that this variable is eventually used for in the below playbooks, it looks like there is a better way to gather that information, like so: `"{{ lookup('file', '/home/some_user/.ssh/id_rsa.pub') }}"`. Should probably look into that.
+_note: This `common_public_key` bit above is likely far from ideal or even bad... Now that I look back at the `authorized_key` [task documentation](http://docs.ansible.com/ansible/authorized_key_module.html) that this variable is eventually used for in the below playbooks, it looks like there is a better way to gather that information, like so:_ `"{{ lookup('file', '/home/some_user/.ssh/id_rsa.pub') }}"`. _I should probably look into that._
+
+Ansible setup is now complete. You can run the playbooks included here. The explanations for these playbooks is below.
 
 ## Explanation of the various playbooks included here
 
 - server-setup/ _folder_
-    - package-setup: insures app is updated, then installs some basic/common packages (see the `with_items` list to see which ones).
+    - package-setup: insures apt is updated, then installs some basic/common packages (see the `with_items` list to see which ones).
     - create-admin-user: creates a sudoy `admin` user in the `sudo` group and adds a public key for access.
     - create-deploy-user: creates a sudoy `deploy` user in the `www-data` group and adds same key as above.
     - modify-var-www-for-deploy: sort of does what it says. modifies the `www-data` folder so the `deploy` user can use it.
