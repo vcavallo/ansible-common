@@ -1,5 +1,6 @@
 # todo:
 
+- add some sort of one-use 'setup.sh' command to do things like _install additional roles_ and anything else that i've otherwise included here as 'run this shell command' instructions (vagrant and virtualbox installs come to mind).
 - ruby installer / general rails setup
 - nginx configs
 - research way around --ask-vault-pass
@@ -57,6 +58,7 @@ Ansible setup is now complete. You can run the playbooks included here. The expl
     - create-admin-user: creates a sudoy `admin` user in the `sudo` group and adds a public key for access.
     - create-deploy-user: creates a sudoy `deploy` user in the `www-data` group and adds same key as above.
     - modify-var-www-for-deploy: sort of does what it says. modifies the `www-data` folder so the `deploy` user can use it.
+    - install-ruby: will install ruby using a _galaxy_ role. See below for config/instructions
     - nginx/ _folder_
         - nginx-setup: installs nginx and copies over the default config file from the template in this repo.
         - handler: restarts nginx, when needed.
@@ -74,6 +76,13 @@ Given the playbooks/tasks currently in existence, if you do this in this order:
 You'll end up with a server that has `admin` and `deploy` users, some sane apt packages, nginx installed and a `www-data` directory ready to go. ...Then you'll have to do all the other hard stuff like install ruby/rails and all your dependencies and all the nginx configs XD.  
 At least until they're added to this repo.
 
+## Install additional roles
+
+`roles.yml` holds other roles that this repo relies on. install them with `ansible-galaxy install --roles-path ./roles -r roles.yml` (may need sudo, depending on your roles path, if you choose not to use the `--roles-path` flag from this command).
+
+### Additional roles instructions
+
+- `geerlingguy.ruby` - set appropriate variables in `vars/ruby-install.yml` for ruby version desired.
 
 ## Gotchas
 

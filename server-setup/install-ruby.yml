@@ -1,0 +1,8 @@
+- hosts: appservers
+  become: yes
+  become_method: sudo
+  vars_files:
+    - ../vars/ruby-install.yml
+
+  roles:
+    - { role: geerlingguy.ruby }
