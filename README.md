@@ -20,6 +20,9 @@ stuff to do when starting with this repo:
 
 # Walkthrough
 
+## Get the necessary files
+- clone this repo for the playbooks: `$ git clone git@github.com:vcavallo/ansible-common.git`
+
 ## Vagrant setup
 
 - install vagrant locally (look this up for your system).
@@ -34,6 +37,7 @@ stuff to do when starting with this repo:
 - install ansible locally (look this up for your system).
 - the explanation for all ansible commands is a bit outside the scope of this project, so definitely check out the ansible basics to get acquainted with what's going on with the different commands and arguments.
 - first off, make sure the IP and path to private key file is correct (from the vagrant details above) in `hosts/vagrant-box`. Use the IP you have in your `Vagrantfile` and the private key path from the `vagrant ssh-config` command.
+- update `~/test_connection.retry` and `~/initial-setup.retry` with the IP you have in your `Vagrantfile`
 - once that's all lined up, when you run `$ ansible-playbook -i hosts test_connection.yml` you should get an `OK` response or two. This means the ansible host data is aligned with your vagrant box. **That's about the end of the setup needed**. If you've got SSH, you've got everything you need for ansible.
 
 - if you don't already have an rsa keypair, generate one now (or generate a new one specifically to use with this. for now, for testing this with vagrant, I've created a key and stored it in dropbox which is ok because I'm not doing anything secret with it).
